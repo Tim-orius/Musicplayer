@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>799</width>
+    <height>535</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="2" colspan="7">
+     <widget class="QListWidget" name="song_list"/>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QListWidget" name="menu_list"/>
+    </item>
+    <item row="2" column="7">
+     <widget class="QPushButton" name="play_pause">
+      <property name="text">
+       <string>|&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="8">
+     <widget class="QPushButton" name="jump_forward">
+      <property name="text">
+       <string>&gt;&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="4">
+     <widget class="QRadioButton" name="shuffle">
+      <property name="text">
+       <string>shuffle</string>
+      </property>
+      <property name="autoExclusive">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="6">
+     <widget class="QPushButton" name="jump_backward">
+      <property name="text">
+       <string>&lt;&lt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="4">
+     <widget class="QLabel" name="now_playing_text">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="9">
+     <widget class="QSlider" name="progress_slider">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="5">
+     <widget class="QRadioButton" name="repeat">
+      <property name="text">
+       <string>repeat</string>
+      </property>
+      <property name="autoExclusive">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>799</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
