@@ -5,18 +5,30 @@
 #include <title.h>
 #include <iostream>
 #include <string>
+#include <vector>
+#include <dirent.h>
+#include <cstdlib>
+//#include <windows.h>
 
 class Player{
 private:
-    Title* titles;
     std::string music_files;
-    bool schuffle;
+    std::vector<std::string> filenames;
+
+    int track_no;
+
+    bool shuffle;
     bool repeat;
 
 public:
     Player();
-    void directory();
+    Title **titles;
+    int ammount;
+    void set_music_files(const std::string& param_music_files);
     void play();
+    void pause();
+    void play_new();
+    void close();
 };
 
 #endif // PLAYER_H
