@@ -3,14 +3,18 @@
 
 #include <iostream>
 #include <string>
-
-using namespace std;
+#include <sstream>
+#include <algorithm>
+#include <iterator>
 
 class Title{
 private:
-    string song_title;
+
 public:
-    Title();
+    std::string song_title;
+    std::string song_author;
+    std::string file_name;
+    Title(std::string title);
     int play();
 };
 
