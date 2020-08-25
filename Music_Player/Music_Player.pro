@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     player.cpp \
-    title.cpp
+    title.cpp \
+    playlist.cpp
 
 HEADERS += \
         mainwindow.h \
     player.h \
-    title.h
+    title.h \
+    playlist.h
 
 FORMS += \
         mainwindow.ui
