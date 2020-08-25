@@ -7,36 +7,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QWidget *widget = new QWidget;
-    setCentralWidget(widget);
-
-    QWidget *topFiller = new QWidget;
-    topFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-    /*
-    infoLabel = new QLabel(tr("<i>Choose a menu option, or right-click to "
-                              "invoke a context menu</i>"));
-    infoLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
-    infoLabel->setAlignment(Qt::AlignCenter);
-    */
-
-    QWidget *bottomFiller = new QWidget;
-    bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-    QVBoxLayout *layout = new QVBoxLayout;
-    layout->setContentsMargins(5, 5, 5, 5);
-    layout->addWidget(topFiller);
-    // layout->addWidget(infoLabel);
-    layout->addWidget(bottomFiller);
-    widget->setLayout(layout);
-
-
     createMenu();
 
     QString message = tr("A context menu is available by right-clicking");
     statusBar()->showMessage(message);
 
     setWindowTitle(tr("Msuic Player"));
+    this->playpause = false;
+
+    connect(this->ui->play_pause, SIGNAL(clicked(bool)), this, SLOT(play_and_pause()));
 }
 
 MainWindow::~MainWindow()
@@ -64,21 +43,47 @@ void MainWindow::createMenu(){
 }
 
 void MainWindow::file_path(){
+    /*
     QFileDialog *dialog = new QFileDialog(nullptr, QString("Select music folder"));
     dialog->setFileMode(QFileDialog::Directory);
     if (dialog->exec()){
         this->music_files = dialog->selectedFiles().first().toUtf8().constData();
         emit imported();
     }
-    cout << this->music_files << endl;
-    this->player->music_files = this->music_files;
-    this->player->directory();
+    std::cout << this->music_files << std::endl;
+    */
+    this->music_files = "/home/tim/Music/";
+    this->player->set_music_files(this->music_files);
+
+    for(int i=0; i<this->player->ammount; ++i){
+        this->ui->song_list->addItem(QString::fromStdString(this->player->titles[i]->file_name));
+    }
 }
 
 void MainWindow::settings(){
-    cout << "2" << endl;
+    std::cout << "2" << std::endl;
 }
 
 void MainWindow::i_need_help(){
-    cout << "3" << endl;
+    std::cout << "3" << std::endl;
+}
+
+void MainWindow::play_and_pause(){
+    if(playpause){
+        this->player->play();
+        this->playpause = false;
+    } else {
+        this->player->pause();
+        this->playpause = true;
+    }
+}
+
+void MainWindow::play_new(){
+    this->playpause = false;
+    this->player->play_new();
+}
+
+void MainWindow::close(){
+    this->playpause = true;
+    this->player->close();
 }

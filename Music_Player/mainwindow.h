@@ -7,6 +7,8 @@
 #include <string>
 #include <chrono>
 
+#include <typeinfo>
+
 #include <QListWidgetItem>
 #include <QMessageBox>
 #include <QFileDialog>
@@ -36,15 +38,17 @@ private:
 
     std::string music_files;
 
+    bool playpause;
+
 
 private slots:
     void settings();
     void i_need_help();
     void file_path();
 
-    void play();
-    void forward();
-    void backward();
+    void play_and_pause();
+    void play_new();
+    void close();
 
 signals:
     void imported();
