@@ -38,16 +38,6 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="4">
-     <widget class="QRadioButton" name="shuffle">
-      <property name="text">
-       <string>shuffle</string>
-      </property>
-      <property name="autoExclusive">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
     <item row="2" column="6">
      <widget class="QPushButton" name="jump_backward">
       <property name="text">
@@ -69,13 +59,17 @@
       </property>
      </widget>
     </item>
+    <item row="2" column="4">
+     <widget class="QPushButton" name="shuffle_button">
+      <property name="text">
+       <string>shuffle</string>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="5">
-     <widget class="QRadioButton" name="repeat">
+     <widget class="QPushButton" name="repeat_button">
       <property name="text">
        <string>repeat</string>
-      </property>
-      <property name="autoExclusive">
-       <bool>false</bool>
       </property>
      </widget>
     </item>
