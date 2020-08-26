@@ -4,7 +4,7 @@ Player::Player(){
 
 }
 
-void Player::set_music_files(const std::string& param_music_files){
+void Player::set_music_files(const std::string &param_music_files){
     std::cout << param_music_files << std::endl;
 
     this->music_files = param_music_files;

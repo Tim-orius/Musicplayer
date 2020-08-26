@@ -9,8 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     createMenu();
 
-    QString message = tr("A context menu is available by right-clicking");
-    statusBar()->showMessage(message);
+    this->player = new Player();
 
     setWindowTitle(tr("Msuic Player"));
     this->playpause = false;
@@ -43,7 +42,6 @@ void MainWindow::createMenu(){
 }
 
 void MainWindow::file_path(){
-    /*
     QFileDialog *dialog = new QFileDialog(nullptr, QString("Select music folder"));
     dialog->setFileMode(QFileDialog::Directory);
     if (dialog->exec()){
@@ -51,8 +49,6 @@ void MainWindow::file_path(){
         emit imported();
     }
     std::cout << this->music_files << std::endl;
-    */
-    this->music_files = "/home/tim/Music/";
     this->player->set_music_files(this->music_files);
 
     for(int i=0; i<this->player->ammount; ++i){

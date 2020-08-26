@@ -24,7 +24,7 @@ public:
     Player();
     Title **titles;
     int ammount;
-    void set_music_files(const std::string& param_music_files);
+    void set_music_files(const std::string &param_music_files);
     void play();
     void pause();
     void play_new();
