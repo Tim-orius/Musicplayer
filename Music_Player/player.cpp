@@ -1,7 +1,7 @@
 #include "player.h"
 
 Player::Player(){
-
+    this->repeat = 0;
 }
 
 void Player::set_music_files(const std::string &param_music_files){
@@ -29,16 +29,21 @@ void Player::set_music_files(const std::string &param_music_files){
     }
 }
 
-void Player::play_new(){
-    if(this->shuffle){
-        srand(time(0));
-        this->track_no = rand()%this->ammount;
+void Player::play_new(std::string play_title){
+    if(play_title == "None"){
+        if(this->shuffle){
+            srand(time(0));
+            this->track_no = rand()%this->ammount;
+        } else {
+            this->track_no = ++this->track_no;
+        }
+        //mciSendString("open \""+this->music_files+this->titles[this->track_no]+"\" type mpegvideo alias mp3", NULL, 0, NULL);
     } else {
-        this->track_no = ++this->track_no;
+        //mciSendString("open \""+this->music_files+play_title+"\" type mpegvideo alias mp3", NULL, 0, NULL);
+        std::cout << play_title << std::endl;
     }
-
-    //mciSendString("open \""+this->music_files+this->titles[this->track_no]+"\" type mpegvideo alias mp3", NULL, 0, NULL);
     std::cout << "Open file" << std::endl;
+    this->play();
 }
 
 void Player::play(){

@@ -18,7 +18,7 @@ private:
     int track_no;
 
     bool shuffle;
-    bool repeat;
+    int repeat;
 
 public:
     Player();
@@ -27,7 +27,7 @@ public:
     void set_music_files(const std::string &param_music_files);
     void play();
     void pause();
-    void play_new();
+    void play_new(std::string play_title="None");
     void close();
 };
 

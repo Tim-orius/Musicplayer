@@ -13,8 +13,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setWindowTitle(tr("Msuic Player"));
     this->playpause = false;
+    this->shuffle_status = false;
+    this->repeat_status = 0;
 
     connect(this->ui->play_pause, SIGNAL(clicked(bool)), this, SLOT(play_and_pause()));
+    connect(this->ui->repeat_button, SIGNAL(clicked(bool)), this, SLOT(on_repeat()));
+    connect(this->ui->shuffle_button, SIGNAL(clicked(bool)), this, SLOT(on_shuffle()));
+    connect(this->ui->song_list, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onListItemClicked(QListWidgetItem*)));
 }
 
 MainWindow::~MainWindow()
@@ -82,4 +87,41 @@ void MainWindow::play_new(){
 void MainWindow::close(){
     this->playpause = true;
     this->player->close();
+}
+
+void MainWindow::onListItemClicked(QListWidgetItem* item){
+    QString item_text = item->text();
+    this->player->play_new(item_text.toUtf8().constData());
+}
+
+void MainWindow::on_repeat(){
+    switch(this->repeat_status){
+    case 0:{
+        this->repeat_status = 1;
+        this->ui->repeat_button->setText("repeat (1)");
+    }
+    case 1:{
+        this->repeat_status = 2;
+        this->ui->repeat_button->setText("repeat (all)");
+    }
+    case 2:{
+        this->repeat_status = 0;
+        this->ui->repeat_button->setText("repeat (no)");
+    }
+    default:{
+        this->repeat_status = 0;
+        this->ui->repeat_button->setText("repeat (no)");
+        std::cout << "default -- repeat" << std::endl;
+    }
+    }
+}
+
+void MainWindow::on_shuffle(){
+    if(this->shuffle_status){
+        this->ui->shuffle_button->setText("shuffle (n)");
+    } else {
+        this->ui->shuffle_button->setText("shuffle (y)");
+    }
+
+    this->shuffle_status = !this->shuffle_status;
 }

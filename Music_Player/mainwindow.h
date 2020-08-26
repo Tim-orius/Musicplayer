@@ -39,6 +39,9 @@ private:
     std::string music_files;
 
     bool playpause;
+    bool shuffle_status;
+
+    int repeat_status;
 
 
 private slots:
@@ -49,6 +52,11 @@ private slots:
     void play_and_pause();
     void play_new();
     void close();
+
+    void on_repeat();
+    void on_shuffle();
+
+    void onListItemClicked(QListWidgetItem* item);
 
 signals:
     void imported();
